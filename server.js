@@ -38,7 +38,8 @@ app.post('/webhook', (req, res) => {
   //res.status(200).send('reached webhook endpoint')
 
   const repositoryName = data.repository ? data.repository.repo_name : 'default_repository';
-  const dockerImageName = `${repositoryName}:${data.push_data.images[0].tag}`;
+  console.log(data)
+  const dockerImageName = `${repositoryName}:${data.push_data.tag}`;
   //const dockerImageName = "k0wshik2/raspiimage:arm64v8";
 
   //const payload = { dockerImageName };
