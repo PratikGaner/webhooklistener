@@ -46,9 +46,10 @@ app.post('/webhook', (req, res) => {
 
   //const payload = { dockerImageName };
 
-  // Publish the payload to the MQTT topic
-  mqttClient.publish(iotTopic, dockerImageName);
-
+  if(tagName){
+    // Publish the payload to the MQTT topic
+    mqttClient.publish(iotTopic, dockerImageName);
+  }
   res.status(200).send('Webhook received and message published to MQTT.');
 });
 
