@@ -35,7 +35,7 @@ app.get('/webhook', (req,res) => {
 
 app.post('/webhook', (req, res) => {
   const data = req.body;
-  res.status(200).send('reached webhook endpoint')
+  //res.status(200).send('reached webhook endpoint')
 
   const repositoryName = data.repository ? data.repository.repo_name : 'default_repository';
   const tagName = data.push_data.tag
@@ -50,7 +50,7 @@ app.post('/webhook', (req, res) => {
   // Publish the payload to the MQTT topic
   mqttClient.publish(iotTopic, dockerImageName);
 
-  //res.status(200).send('Webhook received and message published to MQTT.');
+  res.status(200).send('Webhook received and message published to MQTT.');
 });
 
 app.listen(port, () => {
