@@ -39,9 +39,7 @@ app.post('/webhook', (req, res) => {
 
   const repositoryName = data.repository ? data.repository.repo_name : 'default_repository';
   const tagName = data.push_data.tag
-  while(!repositoryName || !tagName){
-      const dockerImageName = `${repositoryName}:${tagName}`;
-  }
+  const dockerImageName = `${repositoryName}:${tagName}`;
   
   //const dockerImageName = "k0wshik2/raspiimage:arm64v8";
 
